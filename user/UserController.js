@@ -11,7 +11,10 @@ router.post('/', function (req, res) {
     User.create({
             name : req.body.name,
             email : req.body.email,
-            password : req.body.password
+            password : req.body.password,
+            roll_no : req.body.roll_no,
+            batchyr :req.body.batchyr,
+            phone : req.body.phone
         }, 
         function (err, user) {
             if (err) return res.status(500).send("There was a problem adding the information to the database.");
