@@ -5,7 +5,7 @@ var UserSchema = new mongoose.Schema({
   password: String,
   roll_no: String,
   batchyr:String,
-  phone:Integer
+  phone:String
 });
 mongoose.model('User', UserSchema);
 
