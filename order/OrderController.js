@@ -13,6 +13,7 @@ router.post('/', function (req, res) {
           phone: req.body.phone,
           address: req.body.address,
           amount: req.body.amount,
+          items: JSON.parse(req.body.items),
           accepted: false
         }, 
         function (err, order) {
@@ -28,7 +29,14 @@ router.get('/acceptbyid/:id', function (req, res) {
   });
 });
 
-// RETURNS ALL THE USERS IN THE DATABASE
+router.get('/:id', function (req, res) {
+    Order.findById(req.params.id, function (err, order) {
+        if (err) return res.status(500).send("There was a problem finding the user.");
+        if (!order) return res.status(404).send("No user found.");
+        res.status(200).send(order);
+    });
+});
+// RETURNS ALL THE Orders IN THE DATABASE
 router.get('/', function (req, res) {
     Order.find({}, function (err, orders) {
         if (err) return res.status(500).send("There was a problem finding the orders.");

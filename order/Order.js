@@ -5,7 +5,8 @@ var OrderSchema = new mongoose.Schema({
   address: String,
   amount:String,
   created: { type: Date, default: Date.now },
-  accepted: Boolean
+  accepted: Boolean,
+  items: [String],
 });
 mongoose.model('Order', OrderSchema);
 
