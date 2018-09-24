@@ -14,7 +14,6 @@ router.post('/', function (req, res) {
             password : req.body.password,
             roll_no : req.body.roll_no,
             batchyr :req.body.batchyr,
-            group : req.body.group,
             phone : req.body.phone,
             check : req.body.check,
         }, 
