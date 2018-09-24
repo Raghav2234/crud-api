@@ -20,8 +20,8 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-        <Typography color ="primary" variant="display3" gutterBottom>
-          Ranu's Canteen
+        <Typography color ="textPrimary" variant="display3" gutterBottom>
+          Restaurant DashBoard
         </Typography>
 
         <div style={{maxWidth: '60vw', display: 'flex'}}>

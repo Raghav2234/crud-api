@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -19,55 +19,49 @@ const styles = theme => ({
   },
 });
 
-function SimpleExpansionPanel(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="caption" gutterBottom align="right">
-            View Orders
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Grid container spacing={24}>
-            <Grid item xs={6}>
-              <Typography variant="body1" gutterBottom align="left">
-                Veg manchurian
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography variant="body1" gutterBottom align="right">
-                Rs.12
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography variant="body1" gutterBottom align="left">
-                Chicken manchurian
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography variant="body1" gutterBottom align="right">
-                Rs.55
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography variant="body1" gutterBottom align="left">
-                Aloo roll
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography variant="body1" gutterBottom align="right">
-                Rs.24
-              </Typography>
-            </Grid>
+class SimpleExpansionPanel extends Component{
+  renderlist = () => 
+    this.props.fooditems.map((value, index) => {
+      let val = value.split(',')
+      let quantity = val[1]
+      let itemname = val[0]
+      return (
+        <React.Fragment key={index}>
+          <Grid item xs={6}>
+            <Typography variant="body1" gutterBottom align="left">
+              {itemname}
+            </Typography>
           </Grid>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      
-    </div>
+          <Grid item xs={6}>
+            <Typography variant="body1" gutterBottom align="right">
+              Qty. {quantity}
+            </Typography>
+          </Grid>
+        </React.Fragment>
+      )
+    })
+  render(){
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <ExpansionPanel>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="caption" gutterBottom align="right">
+              View Orders
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Grid container spacing={24}>
+            {this.renderlist()}
+            </Grid>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      </div>
   );
+  }
 }
+
+
 
 SimpleExpansionPanel.propTypes = {
   classes: PropTypes.object.isRequired,
