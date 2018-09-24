@@ -14,7 +14,8 @@ router.post('/', function (req, res) {
             password : req.body.password,
             roll_no : req.body.roll_no,
             batchyr :req.body.batchyr,
-            phone : req.body.phone
+            phone : req.body.phone,
+            check : req.body.check,
         }, 
         function (err, user) {
             if (err) return res.status(500).send("There was a problem adding the information to the database.");
