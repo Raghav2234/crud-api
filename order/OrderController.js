@@ -38,7 +38,7 @@ router.get('/:id', function (req, res) {
 });
 // RETURNS ALL THE Orders IN THE DATABASE
 router.get('/', function (req, res) {
-    Order.find({}, function (err, orders) {
+    Order.find({}, null, {sort: {created: -1}}, function (err, orders) {
         if (err) return res.status(500).send("There was a problem finding the orders.");
         res.status(200).send(orders);
     });
