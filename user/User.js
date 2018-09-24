@@ -5,7 +5,6 @@ var UserSchema = new mongoose.Schema({
   password: String,
   roll_no: String,
   batchyr:String,
-  group:String,
   phone:String,
   check:String,
 });
