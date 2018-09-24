@@ -9,13 +9,21 @@ export default class FetchOrders extends Component {
         orders: []
       };
     }
-
+    
     componentDidMount() {
+      this.timer = setInterval(()=> this.getOrders(), 1000);
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.timer)
+      this.timer = null;
+    }
+    
+    getOrders(){
       fetch(API_URL+'/orders')
         .then(response => response.json())
         .then(orders => this.setState({ orders }));
     }
-
 
     render() {
       return(

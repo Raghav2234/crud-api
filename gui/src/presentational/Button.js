@@ -23,6 +23,7 @@ class OutlinedButtons extends Component {
       btntext: 'Confirm Order'
     };
   }
+
   componentDidMount(){
     if(this.props.accepted === false){
       this.setState({color: 'primary', btntext:'Confirm Order'})
@@ -31,6 +32,24 @@ class OutlinedButtons extends Component {
       this.setState({color: 'secondary', btntext:'Confirmed'})
     }
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if(this.props === nextProps)
+      return false;  
+    else{
+      return true
+    }
+  }
+  
+  componentDidUpdate(){
+    if(this.props.accepted === false){
+      this.setState({color: 'primary', btntext:'Confirm Order'})
+    }
+    else {
+      this.setState({color: 'secondary', btntext:'Confirmed'})
+    }
+  }
+
   handleClick(e) {
     if(this.state.btntext === 'Confirmed') return
     fetch(API_URL+`/orders/acceptbyid/${this.props._id}`)
