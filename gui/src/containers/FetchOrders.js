@@ -32,7 +32,6 @@ export default class FetchOrders extends Component {
     }
 
     render() {
-      console.log('1')
       return(
         <Home orders={this.state.orders}/>
       )
