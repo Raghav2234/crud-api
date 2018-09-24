@@ -6,6 +6,7 @@ app.use(cors())
 var db = require('./db');
 var UserController = require('./user/UserController');
 var OrderController = require('./order/OrderController');
+app.use(express.static('gui/build'))
 app.use('/users', UserController);
 app.use('/orders', OrderController);
 
