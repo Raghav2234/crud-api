@@ -88,7 +88,7 @@ function SimpleCard(props) {
           justify="space-between"
           className={classes.pad}
         >
-        <Button/>
+        <Button accepted={info.accepted} _id={info._id}/>
         <Typography className={classes.bluecolor} variant="body2" gutterBottom align="left">
           Amount: Rs.{info.amount}
         </Typography>
